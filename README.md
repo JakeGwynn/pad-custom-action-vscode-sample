@@ -36,8 +36,9 @@ The official Microsoft docs assume you have Visual Studio installed and use `sig
 1. **Target framework must be `net472`** (.NET Framework 4.7.2). Other targets will not load.
 2. **Assembly name must match the pattern `Modules.*` or `*.Modules.*`** (e.g., `Modules.SampleActions`).
 3. **`AssemblyTitle` cannot contain `.`** — use underscores (e.g., `Modules_SampleActions`).
-4. **Both the module DLL and the `.cab` package must be signed** with a code-signing certificate.
-5. **The signing certificate must be trusted on every machine that runs the flow** — see [Trust the certificate on each PAD machine](#5-trust-the-certificate-on-each-pad-machine).
+4. **`Category` on every `[Action]` must be a valid identifier** — letters, digits, and underscores only; **no spaces, dashes, or dots**. Example: `Category = "TextUtilities"`, NOT `"Text Utilities"`. The same rule applies to action `Id`. (PAD will reject the upload with *"is not a valid identifier"* otherwise.)
+5. **Both the module DLL and the `.cab` package must be signed** with a code-signing certificate.
+6. **The signing certificate must be trusted on every machine that runs the flow** — see [Trust the certificate on each PAD machine](#5-trust-the-certificate-on-each-pad-machine).
 
 ---
 
@@ -273,6 +274,7 @@ Get-AuthenticodeSignature .\Output\Modules.SampleActions.cab
 - Confirm `<TargetFramework>` is `net472`.
 - Confirm the assembly name matches `Modules.*` or `*.Modules.*`.
 - Confirm `AssemblyTitle` uses underscores, not dots.
+- Confirm every `[Action]` `Id` and `Category` is a valid identifier (no spaces, dashes, or dots). PAD shows *"`<value>` is not a valid identifier"* on upload otherwise.
 - After uploading the new CAB, **restart PAD**.
 
 ### `dotnet` not found
