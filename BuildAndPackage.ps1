@@ -55,7 +55,8 @@ $PfxPath     = (Resolve-Path $PfxPath).Path
 $ProjectDir  = (Resolve-Path $ProjectDir).Path
 $binDir      = Join-Path $ProjectDir "bin\$Configuration\net472"
 $outputDir   = Join-Path $PSScriptRoot "Output"
-$cabFilename = "Modules.SampleActions.cab"
+# Derive CAB filename from the project folder so this script works for any Modules.* project.
+$cabFilename = "$([IO.Path]::GetFileName($ProjectDir)).cab"
 
 # --- Step 1: Build the project ---
 Write-Host ""
