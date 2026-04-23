@@ -61,9 +61,19 @@ The official Microsoft docs assume you have Visual Studio installed and use `sig
 
 ## Quick start
 
+> **PowerShell execution policy.** By default, Windows is set to `Restricted`, which blocks running local `.ps1` files. Before invoking the scripts, run **one** of these in your PowerShell window:
+>
+> ```powershell
+> # Recommended (only affects this PowerShell session):
+> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+>
+> # OR, persistent for your user account:
+> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+> ```
+
 ```powershell
 # 1. Clone and open in VS Code
-git clone https://github.com/<your-org>/pad-custom-action-vscode-sample.git
+git clone https://github.com/JakeGwynn/pad-custom-action-vscode-sample.git
 cd pad-custom-action-vscode-sample
 
 # 2. Restore + build
@@ -271,6 +281,20 @@ Install the .NET SDK and open a new terminal:
 
 ```powershell
 winget install Microsoft.DotNet.SDK.8
+```
+
+### `running scripts is disabled on this system` / `UnauthorizedAccess`
+
+Default PowerShell execution policy on Windows is `Restricted`. Either bypass for the current session:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+```
+
+Or set a persistent (and still safe) policy for your user account once:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
 
 ---
