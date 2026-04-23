@@ -1,0 +1,28 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+Output/
+
+# Cabinet build artifacts
+*.cab
+setup.inf
+setup.rpt
+
+# Certificates - NEVER commit private keys
+Certs/
+*.pfx
+*.cer
+*.crt
+*.p12
+*.pem
+*.key
+
+# Logs
+*.log
+
+# IDE / OS
+.vs/
+.vscode/
+*.user
+.DS_Store
+Thumbs.db

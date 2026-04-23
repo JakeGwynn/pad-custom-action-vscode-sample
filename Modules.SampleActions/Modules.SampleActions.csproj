@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyTitle>Modules_SampleActions</AssemblyTitle>
+    <Description>Sample Power Automate Desktop custom action module</Description>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" Version="*" />
+  </ItemGroup>
+
+</Project>
